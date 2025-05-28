@@ -16,6 +16,12 @@ const PORT = process.env.PORT || 8000;
 if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
 }
+
+
+app.get('/',(req,res)=>{
+    res.send('hello')
+})
+
 app.use(express.json());
 
 // routes
