@@ -4,6 +4,9 @@ const {login} = require('../controllers/loginController')
 
 router.post("/register",createNewUser);
 router.post("/login",login);
+router.get("/register",(req,res)=>{
+    res.send('hello from register')
+});
 
 
 
