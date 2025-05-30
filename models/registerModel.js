@@ -2,17 +2,19 @@ const mongoose = require("mongoose");
 
 const Userschema = new mongoose.Schema(
   {
+    name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    country: { type: String, required: true },
+    gender: { type: String, enum: ["male", "female"], required: true },
+    password: { type: String, required:true,select: false },
     phone: { type: String, unique: true, sparse: true }, // Optional
-    password: { type: String, select: false },
+    city: { type: String, required: true },
+    height: { type: String, required: true },
+    weight: { type: String, required: true },
 
     // Profile Details (Like BuzzArab)
-    name: { type: String, required: true },
-    gender: { type: String, enum: ["male", "female"], required: true },
     birthDate: { type: Date },
-    country: { type: String, required: true },
-    city: { type: String, required: true },
-    profilePicture: { type: String, default: "default.jpg" },
+    profilePicture: { type: String, default: "/images/default.jpg" },
     bio: { type: String, maxlength: 500 },
 
     // Verification (Like BuzzArab's strict checks)

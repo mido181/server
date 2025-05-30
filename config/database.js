@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const DBConn = () => {
-  mongoose.connect('mongodb://localhost:27017/test')
+  mongoose
+    .connect(
+      "mongodb+srv://mohamed:Zm03gu7bMzdMor00@cluster0.z4nvyjp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    )
     .then((conn) => {
       console.log(`DB connections Success ${conn.connection.host}`);
     })
@@ -11,4 +14,4 @@ const DBConn = () => {
     });
 };
 
-module.exports =  DBConn;
+module.exports = DBConn;
