@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", [
-    "server-eta-amber.vercel.app"
+    "https://muslima-henna.vercel.app"
 
   ]);
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
