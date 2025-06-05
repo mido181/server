@@ -1,16 +1,14 @@
 const router = require("express").Router();
 const { createNewUser } = require("../controllers/registerController");
 const { login } = require("../controllers/loginController");
-
+const { logout } = require("../controllers/logoutController");
+const { refreshToken } = require("../controllers/refreshTokenController");
+const {checkAuthStatus} = require('../controllers/checkAuth.controller')
 router.post("/register", createNewUser);
 router.post("/login", login);
-router.get("/register", (req, res) => {
-  res.send("hello from register");
-});
+router.get("/logout", logout);
+router.post("/refresh", refreshToken);
+router.post("/status", checkAuthStatus);
 
-router.get("/", (req, res) => {
-  console.log("hellp");
-  res.send({ name: "hellp" });
-});
 
 module.exports = router;
