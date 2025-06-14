@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = async (user) => {
-  return jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id: user }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
 };
 
 const generateRefreshToken = async (user) => {
   return jwt.sign(
-    { id: user._id },
+    { id: user },
     process.env.REFRESH_TOKEN_SECRET,
     { expiresIn: "2d" } // Longer-lived refresh token
   );

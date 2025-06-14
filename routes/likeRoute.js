@@ -1,4 +1,3 @@
-
 const router = require("express").Router();
 
 const {
@@ -11,8 +10,8 @@ const {
 
 router.post("/", likeUser);
 router.post("/unlike", unlikeUser);
-router.get("/liked/:userId", allLikesOther);
-router.get("/liked-by/:userId", allLikesMe);
-router.get("/matches/:userId", allLikesEachother);
+router.get("/liked", allLikesOther);
+router.get("/likers", allLikesMe);
+router.get("/matches", allLikesEachother);
 
 module.exports = router;

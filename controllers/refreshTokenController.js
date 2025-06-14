@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const User = require("../models/userModel");
 const { generateAccessToken, verifyRefreshToken } = require("../utils/generateToken");
+const asyncHandler = require('../middlewares/asyncHandler')
 
-exports.refreshToken = async (req, res) => {
-  try {
+exports.refreshToken = asyncHandler( async (req, res) => {
+
     const refreshToken = req.cookies.refreshToken;
-    if (!refreshToken) return res.sendStatus(401);
+    if (!refreshToken) return res.status(401).json({error:'لا يوجد توكن'});
     // 1. Verify token and check DB
 
     const user = await User.findOne({ refreshToken });
@@ -23,7 +24,8 @@ const verify = await verifyRefreshToken(refreshToken)
       maxAge: 15 * 60 * 1000,
     });
     res.json({ success: true });
-  } catch (err) {
-    res.status(403).send(err);
-  }
-};
+  } 
+  // catch (err) {
+  //   res.status(403).send(err);
+  // }
+)

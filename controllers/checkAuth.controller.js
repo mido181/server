@@ -1,8 +1,10 @@
+const asyncHandler = require("../middlewares/asyncHandler");
 const {
   verifyAccessToken,
   verifyRefreshToken,
 } = require("../utils/generateToken");
 
+// cosnt asyncHandler = require('../middlewares/')
 exports.checkAuthStatus = async (req, res) => {
   // 1. Check if access token exists and is valid
   try {
