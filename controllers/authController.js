@@ -41,6 +41,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     brithdate: req.body.brithdate,
     isOnline: true,
   });
+  condole.log('hhh')
   const refreshToken = await generateRefreshToken(user._id);
   const accessToken = await generateAccessToken(user._id);
   user.refreshToken = refreshToken;
