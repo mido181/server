@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = async (user) => {
-  return jwt.sign({ id: user }, "4x5k8zL2e9pQ1rT7wY3v6uC0oB9nM2lK5jH8gF1dS4aV7qE", {
+  return jwt.sign({ id: user }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
 };
@@ -9,17 +9,17 @@ const generateAccessToken = async (user) => {
 const generateRefreshToken = async (user) => {
   return jwt.sign(
     { id: user },
-    '4x5k8zL2e9pQ1rT7wY3v6uC0oB9nM2lK5jH8gF1dS4aV7qEiiiiui87987hoih',
+    process.env.REFRESH_TOKEN_SECRET,
     { expiresIn: "2d" } // Longer-lived refresh token
   );
 };
 
 const verifyRefreshToken = async (token) => {
-  return jwt.verify(token, '4x5k8zL2e9pQ1rT7wY3v6uC0oB9nM2lK5jH8gF1dS4aV7qEiiiiui87987hoih', { algorithms: ['HS256'] });
+  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, { algorithms: ['HS256'] });
 };
 
 const verifyAccessToken = async (token) => {
-  return jwt.verify(token, "4x5k8zL2e9pQ1rT7wY3v6uC0oB9nM2lK5jH8gF1dS4aV7qE", { algorithms: ['HS256'] });
+  return jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
 };
 
 module.exports = {
